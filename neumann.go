@@ -73,7 +73,7 @@ func (m Matrix) NeumannWavePropagation(endPoint Point, points []Point, limitValu
 
 				p := NewPoint(currPoint.X+x, currPoint.Y+y)
 				// ячейка за гранью или это препятствие или это диагональные точки
-				if !p.In(m) || m.Value(p) <= Obstacle || p.TouchCorner(currPoint) {
+				if m.IsObstacle(p) || p.TouchCorner(currPoint) {
 					continue
 				}
 

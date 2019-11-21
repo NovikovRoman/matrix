@@ -82,7 +82,7 @@ func (m Matrix) Reset() {
 
 // Точка является препятствием
 func (m Matrix) IsObstacle(p Point) bool {
-	return !p.In(m) || m.Value(p) == Obstacle
+	return !p.In(m) || m.Value(p) < Empty
 }
 
 func (m Matrix) nextPathPoint(path *Path, startPoint Point, checkPoint Point, direct bool) {

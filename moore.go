@@ -81,7 +81,7 @@ func (m Matrix) MooreWavePropagation(endPoint Point, points []Point, limitValue 
 				}
 
 				p := NewPoint(currPoint.X+x, currPoint.Y+y)
-				if !p.In(m) || m.Value(p) <= Obstacle { // ячейка за гранью или это препятствие
+				if m.IsObstacle(p) { // ячейка за гранью или это препятствие
 					continue
 				}
 
