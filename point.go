@@ -1,6 +1,9 @@
 package matrix
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 type Point struct {
 	X int
@@ -37,6 +40,10 @@ func (p *Point) Mul(k int) {
 func (p *Point) Div(k int) {
 	p.X /= k
 	p.Y /= k
+}
+
+func (p Point) String() string {
+	return fmt.Sprintf("(%d, %d)", p.X, p.Y)
 }
 
 func (p Point) TouchCorner(point Point) bool {
