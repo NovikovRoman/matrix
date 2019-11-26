@@ -46,6 +46,10 @@ func (p Point) String() string {
 	return fmt.Sprintf("(%d, %d)", p.X, p.Y)
 }
 
+func (p Point) Separate() (int, int) {
+	return p.X, p.Y
+}
+
 func (p Point) TouchCorner(point Point) bool {
 	return math.Abs(float64(p.X-point.X))+math.Abs(float64(p.Y-point.Y)) == 2
 }
