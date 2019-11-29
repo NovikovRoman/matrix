@@ -85,6 +85,11 @@ func (m Matrix) IsObstacle(p Point) bool {
 	return !p.In(m) || m.Value(p) < Empty
 }
 
+// Точка является непреодолимым препятствием.
+func (m Matrix) IsInsurmountableObstacle(p Point) bool {
+	return !p.In(m) || m.Value(p) == Obstacle
+}
+
 func (m Matrix) nextPathPoint(path *Path, startPoint Point, checkPoint Point, direct bool) {
 	if startPoint.Eq(checkPoint) {
 		return
