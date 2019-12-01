@@ -54,6 +54,53 @@ func (p Point) TouchCorner(point Point) bool {
 	return math.Abs(float64(p.X-point.X))+math.Abs(float64(p.Y-point.Y)) == 2
 }
 
+type Points []Point
+
+func (p Points) Contains(point Point) int {
+	for i := range p {
+		if p[i].Eq(point) {
+			return i
+		}
+	}
+	return -1
+}
+
+func (p *Points) Add(points ...Point) int {
+	for _, point := range points {
+		if p.Contains(point) > -1 {
+			continue
+		}
+		*p = append(*p, point)
+	}
+
+	return len(*p)
+}
+
+func (p *Points) Remove(points ...Point) int {
+	for _, point := range points {
+		i := p.Contains(point)
+		if i == -1 {
+			continue
+		}
+
+		b := Points{}
+
+		if i == 0 {
+			b = (*p)[1:]
+
+		} else if i == len(*p)-1 {
+			b = (*p)[:i]
+
+		} else {
+			b = (*p)[:i]
+			b = append(b, (*p)[i+1:]...)
+		}
+
+		*p = b
+	}
+	return len(*p)
+}
+
 func NewPoint(x, y int) Point {
 	return Point{X: x, Y: y}
 }
