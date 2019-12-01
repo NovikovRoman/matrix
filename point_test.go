@@ -53,4 +53,10 @@ func TestNewPoint(t *testing.T) {
 	points.Remove(PointZero(), PointZero(), NewPoint(3, 2), NewPoint(3, 2))
 	require.Len(t, points, 3)
 	require.True(t, points[2].Eq(p))
+
+	points = NewPoints(2)
+	require.Len(t, points, 2)
+	require.True(t, points[0].Eq(PointZero()))
+	require.True(t, points[1].Eq(PointZero()))
+
 }

@@ -101,6 +101,10 @@ func (p *Points) Remove(points ...Point) int {
 	return len(*p)
 }
 
+func NewPoints(length int) Points {
+	return make([]Point, length)
+}
+
 func NewPoint(x, y int) Point {
 	return Point{X: x, Y: y}
 }
