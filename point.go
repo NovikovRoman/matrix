@@ -56,7 +56,7 @@ func (p Point) TouchCorner(point Point) bool {
 
 type Points []Point
 
-func (p Points) Contains(point Point) int {
+func (p Points) Search(point Point) int {
 	for i := range p {
 		if p[i].Eq(point) {
 			return i
@@ -67,7 +67,7 @@ func (p Points) Contains(point Point) int {
 
 func (p *Points) Add(points ...Point) int {
 	for _, point := range points {
-		if p.Contains(point) > -1 {
+		if p.Search(point) > -1 {
 			continue
 		}
 		*p = append(*p, point)
@@ -78,7 +78,7 @@ func (p *Points) Add(points ...Point) int {
 
 func (p *Points) Remove(points ...Point) int {
 	for _, point := range points {
-		i := p.Contains(point)
+		i := p.Search(point)
 		if i == -1 {
 			continue
 		}
