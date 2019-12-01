@@ -65,6 +65,10 @@ func (p Points) Search(point Point) int {
 	return -1
 }
 
+func (p Points) GetIndex(point Point) int {
+	return p.Search(point)
+}
+
 func (p *Points) Add(points ...Point) int {
 	for _, point := range points {
 		if p.Search(point) > -1 {
