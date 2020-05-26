@@ -174,3 +174,16 @@ func (m Matrix) TouchCornerObstacle(p1 Point, p2 Point) bool {
 	pT2 := NewPoint(p2.X, p1.Y)
 	return m.IsObstacle(pT1) && m.IsObstacle(pT2)
 }
+
+func (m Matrix) Clone() Matrix {
+	mc := make([][]float64, m.Height())
+
+	for y := range m {
+		mc[y] = make([]float64, m.Width())
+		for x := range m[y] {
+			mc[y][x] = m[y][x]
+		}
+	}
+
+	return mc
+}

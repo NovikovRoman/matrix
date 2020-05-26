@@ -65,3 +65,13 @@ func saveMatrix(t *testing.T, filename string, m Matrix, path Path, k float64) {
 	err := imaging.Save(imSet, filepath.Join(testdata, filename))
 	require.Nil(t, err)
 }
+
+func TestMatrix_Clone(t *testing.T) {
+	m := NewMatrix(10, 5, 12.3)
+	mc := m.Clone()
+	point := Point{X: 3, Y: 4}
+	m.SetValue(point, 25)
+	require.True(t, m.Value(point) != mc.Value(point))
+	require.Equal(t, m.Value(point), 25.0)
+	require.Equal(t, mc.Value(point), 12.3)
+}
