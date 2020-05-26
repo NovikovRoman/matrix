@@ -52,7 +52,7 @@ func (m Matrix) NeumannWavePropagation(endPoint Point, points []Point, limitValu
 
 	//обходим точки
 	for _, currPoint := range points {
-		v := m.Value(currPoint) + 1 // todo: может регулироемое сделать?
+		v := m.Value(currPoint) + 1 // todo: может регулируемое сделать?
 
 		// достигли лимита
 		if limitValue > 0 && v > limitValue {
